@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="100" fill="#173b73"/>
+  <rect x="75" y="75" width="362" height="362" rx="65" fill="#2563eb"/>
+  <path d="M130 145 Q195 120 256 165 Q317 120 382 145 V350 Q317 325 256 370 Q195 325 130 350 Z" fill="white"/>
+  <path d="M256 165 V370" stroke="#173b73" stroke-width="12" fill="none"/>
+  <text x="256" y="425" font-size="34" font-weight="bold" text-anchor="middle" fill="white">ENGLISH</text>
+</svg>
