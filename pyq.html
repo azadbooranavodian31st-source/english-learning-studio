@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PYQ Practice - English Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <header class="page-header">
+        <a href="index.html" class="back-btn"><i class='bx bx-arrow-back'></i></a>
+        <div class="logo">
+            <i class='bx bx-history'></i>
+            <span>PYQ Practice</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Filters (For future expansion) -->
+        <div class="filter-section">
+            <select id="exam-filter" class="search-bar" style="width: 48%; display: inline-block;">
+                <option value="all">All Exams</option>
+                <option value="SSC CGL">SSC CGL</option>
+                <option value="SSC CHSL">SSC CHSL</option>
+            </select>
+            <select id="topic-filter" class="search-bar" style="width: 48%; display: inline-block; float: right;">
+                <option value="all">All Topics</option>
+                <option value="Grammar">Grammar</option>
+                <option value="Vocabulary">Vocabulary</option>
+            </select>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Questions will be injected here via JavaScript -->
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="pyq.js"></script>
+</body>
+</html>
