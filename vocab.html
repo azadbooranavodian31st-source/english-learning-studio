@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary - English Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <!-- Top Header with Back Button -->
+    <header class="page-header">
+        <a href="index.html" class="back-btn"><i class='bx bx-arrow-back'></i></a>
+        <div class="logo">
+            <i class='bx bx-library'></i>
+            <span>Vocab Builder</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <p style="color: var(--text-muted); margin-bottom: 10px;">Master words using the Black Book method.</p>
+        
+        <input type="text" id="search-vocab" class="search-bar" placeholder="Search for a word...">
+
+        <!-- Vocabulary Cards will appear inside this div automatically -->
+        <div id="vocab-list"></div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="vocab.js"></script>
+</body>
+</html>
