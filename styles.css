@@ -1,0 +1,191 @@
+/* Core Variables & Theming */
+:root {
+    --bg-color: #f4f7f6;
+    --text-color: #333333;
+    --card-bg: #ffffff;
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --border-color: #e5e7eb;
+    --text-muted: #6b7280;
+}
+
+.dark-theme {
+    --bg-color: #121212;
+    --text-color: #f3f4f6;
+    --card-bg: #1e1e1e;
+    --primary-color: #3b82f6;
+    --secondary-color: #60a5fa;
+    --border-color: #374151;
+    --text-muted: #9ca3af;
+}
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    padding-bottom: 40px;
+}
+
+/* Layout */
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Header */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Progress Section */
+.progress-section {
+    margin: 20px 0;
+}
+
+.progress-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.stats-card {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-item i {
+    font-size: 1.8rem;
+}
+
+.stat-item h4 {
+    font-size: 1rem;
+}
+
+.stat-item p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Learning Rooms Grid */
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.room-card {
+    background-color: var(--card-bg);
+    padding: 20px 15px;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.room-card:active {
+    transform: scale(0.98);
+}
+
+.room-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.room-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.room-card p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Highlight important feature (PYQ) */
+.room-card.highlight {
+    border: 2px solid var(--primary-color);
+    background-color: rgba(37, 99, 235, 0.05);
+}
+
+/* AI Section */
+.ai-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+}
+
+.ai-info h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.ai-info p {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.ai-btn {
+    background-color: white;
+    color: var(--primary-color);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
