@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173b73">
+<title>English Learning Studio</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f2f5fa;color:#172033;font:16px Arial,sans-serif}header{background:linear-gradient(120deg,#173b73,#2874d9);color:white;padding:25px 18px;border-radius:0 0 22px 22px}header h1{margin:0;font-size:24px}header p{margin:8px 0 0}.wrap{max-width:800px;margin:auto;padding:15px}.stats,.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat,.card,.tile{background:white;border:1px solid #e0e7f0;border-radius:14px;padding:14px}.stat b{display:block;font-size:22px;color:#173b73}.stat small,.muted{color:#66758b}.grid{grid-template-columns:repeat(2,1fr);margin-top:12px}.tile{text-align:left;min-height:100px;font-size:16px;color:#172033}.tile b{display:block;margin:8px 0}.tile span{font-size:24px}.tile small{color:#66758b}h2{font-size:20px;margin:22px 0 12px}button{cursor:pointer}.primary{background:#2563eb;color:white;border:0;border-radius:9px;padding:12px 16px;font-weight:bold}.secondary{background:#eaf0fc;color:#173b73;border:0;border-radius:9px;padding:10px 14px}.option{display:block;width:100%;text-align:left;margin:8px 0;padding:12px;border:1px solid #dce4ef;border-radius:9px;background:#f8faff;font-size:15px;color:#172033}.hidden{display:none}.word{font-size:27px;font-weight:bold;color:#173b73}textarea{width:100%;padding:12px;border:1px solid #ccd5e2;border-radius:9px;font:inherit}.bar{height:10px;background:#e5eaf2;border-radius:20px;overflow:hidden}.bar i{display:block;background:#2874d9;height:100%}a{color:#2563eb}footer{text-align:center;color:#66758b;padding:25px;font-size:12px}@media(max-width:390px){.stats{gap:6px}.stat{padding:9px}.stat b{font-size:18px}}
+</style>
+</head>
+<body>
+<header><h1>📘 English Learning Studio</h1><p>SSC CGL • SSC CHSL • Everyday English</p></header>
+<main class="wrap">
+<div class="stats">
+<div class="stat"><b id="attempts">0</b><small>Questions attempted</small></div>
+<div class="stat"><b id="accuracy">0%</b><small>Accuracy</small></div>
+<div class="stat"><b id="words">0</b><small>Words learned</small></div>
+</div>
+<section id="home">
+<h2>Your Learning Rooms</h2>
+<div class="grid">
+<button class="tile" onclick="openRoom('quiz')"><span>🧩</span><b>Cloze & Grammar</b><small>Rules and MCQs</small></button>
+<button class="tile" onclick="openRoom('pqrs')"><span>🔀</span><b>PQRS</b><small>Sentence arrangement</small></button>
+<button class="tile" onclick="openRoom('reading')"><span>📖</span><b>Comprehension</b><small>Passage practice</small></button>
+<button class="tile" onclick="openRoom('vocab')"><span>🗂️</span><b>Vocabulary</b><small>Hindi meaning and usage</small></button>
+<button class="tile" onclick="openRoom('editorial')"><span>📰</span><b>The Hindu Editorial</b><small>Daily reading guide</small></button>
+<button class="tile" onclick="openRoom('spoken')"><span>🎙️</span><b>Spoken English</b><small>Sentence practice</small></button>
+<button class="tile" onclick="openRoom('progress')"><span>📊</span><b>30-Day Progress</b><small>Track your improvement</small></button>
+</div>
+<div class="card" style="margin-top:15px"><b>Today's target</b><p class="muted">Practise 10 questions, learn 5 words and read one passage.</p></div>
+</section>
+<section id="room" class="hidden">
+<p><button class="secondary" onclick="home()">← Back to Home</button></p>
+<div id="content"></div>
+</section>
+<footer>Your learning progress is saved in this browser on this device.</footer>
+</main>
+<script>
+let p=JSON.parse(localStorage.getItem('elsProgress')||'{"attempts":0,"correct":0,"words":[],"days":{}}');
+const el=id=>document.getElementById(id);
+function save(){localStorage.setItem('elsProgress',JSON.stringify(p));refresh()}
+function refresh(){el('attempts').textContent=p.attempts;el('accuracy').textContent=(p.attempts?Math.round(p.correct/p.attempts*100):0)+'%';el('words').textContent=p.words.length}
+function record(ok){p.attempts++;if(ok)p.correct++;let d=new Date().toISOString().slice(0,10);p.days[d]=(p.days[d]||0)+1;save()}
+function home(){el('home').classList.remove('hidden');el('room').classList.add('hidden')}
+function openRoom(name){el('home').classList.add('hidden');el('room').classList.remove('hidden');let c=el('content');c.innerHTML='';
+if(name==='vocab'){let ws=[['Abundant','adjective','प्रचुर, बहुत अधिक','Plentiful','Scarce','There is abundant evidence.'],['Lure','verb/noun','लुभाना, आकर्षित करना','Entice','Repel','Advertisements may lure customers.'],['Reluctant','adjective','अनिच्छुक','Unwilling','Willing','He was reluctant to speak.'],['Diligent','adjective','मेहनती, परिश्रमी','Hardworking','Lazy','A diligent student practises daily.'],['Inevitable','adjective','अपरिहार्य, जिसे टाला न जा सके','Unavoidable','Avoidable','Change is inevitable.']];let i=0;function show(){let w=ws[i];c.innerHTML='<h2>Boost Vocabulary</h2><div class="card"><div class="word">'+w[0]+'</div><p><b>POS:</b> '+w[1]+'</p><p><b>Hindi:</b> '+w[2]+'</p><p><b>Synonym:</b> '+w[3]+'</p><p><b>Antonym:</b> '+w[4]+'</p><p><b>Example:</b> '+w[5]+'</p><button class="primary" id="learn">Mark as learned</button> <button class="secondary" id="next">Next word</button><p class="muted">Word '+(i+1)+' of '+ws.length+'</p></div>';el('learn').onclick=()=>{if(!p.words.includes(w[0]))p.words.push(w[0]);save()};el('next').onclick=()=>{i=(i+1)%ws.length;show()}}show();return}
+if(name==='progress'){let days=Object.keys(p.days).length,acc=p.attempts?Math.round(p.correct/p.attempts*100):0;c.innerHTML='<h2>30-Day Progress Report</h2><div class="card"><p><b>Total attempts:</b> '+p.attempts+'</p><p><b>Correct answers:</b> '+p.correct+'</p><p><b>Accuracy:</b> '+acc+'%</p><div class="bar"><i style="width:'+acc+'%"></i></div><p><b>Words learned:</b> '+p.words.length+'</p><p><b>Active days recorded:</b> '+days+'</p><p class="muted">Keep practising to build a useful performance history. This report uses activity saved on this device.</p></div>';return}
+if(name==='editorial'){c.innerHTML='<h2>The Hindu Editorial</h2><div class="card"><b>Daily editorial study method</b><ol><li>Open the opinion section.</li><li>Choose one article and note its headline and date.</li><li>Write a 5-sentence summary.</li><li>Learn 8–10 words with Hindi meanings.</li><li>Answer 3 comprehension questions.</li><li>Write your own opinion in 100 words.</li></ol><a href="https://www.thehindu.com/opinion/" target="_blank">Open The Hindu Opinion</a><p class="muted">This version does not automatically fetch articles. Use the original publisher link.</p></div>';return}
+if(name==='spoken'){c.innerHTML='<h2>Spoken English Practice</h2><div class="card"><p>Topic: Describe your daily routine in 5 sentences.</p><textarea rows="5" id="speech" placeholder="Write your sentences here..."></textarea><p class="muted">Check your tense, subject-verb agreement and word order. You can share your sentences in ChatGPT for detailed corrections.</p><button class="primary" onclick="alert(\'Read your sentences aloud. Check grammar and pronunciation.\')">Practice checklist</button></div>';return}
+let qs=[];
+if(name==='quiz')qs=[['She ___ to school every day.',['go','goes','going'],'goes','With she/he/it, use the verb with -s or -es in the simple present.'],['He is good ___ mathematics.',['in','at','on'],'at','The correct expression is good at.'],['Neither of the boys ___ present.',['are','is','were'],'is','Neither is generally treated as singular in this exam pattern.']];
+if(name==='pqrs')qs=[['Choose the correct order: P: submitted it / Q: she checked the form / R: carefully / S: and then',['Q-R-S-P','P-Q-R-S','R-P-S-Q'],'Q-R-S-P','First she checked the form carefully and then submitted it.']];
+if(name==='reading')qs=[['Passage: Trees absorb carbon dioxide, provide shade and support birds and insects. What is its main idea?',['Trees benefit the environment.','Trees only provide shade.','Birds damage trees.'],'Trees benefit the environment.','The passage lists several benefits of trees.']];
+let i=0,score=0;c.innerHTML='<h2>'+(name==='pqrs'?'PQRS Practice':name==='reading'?'Reading Comprehension':'Grammar & Cloze Practice')+'</h2><div id="question"></div>';
+function ask(){if(i>=qs.length){c.innerHTML='<div class="card"><h2>Practice completed!</h2><p>Your score: '+score+'/'+qs.length+'</p><button class="primary" onclick="home()">Home</button></div>';return}let q=qs[i];el('question').innerHTML='<div class="card"><p class="muted">Question '+(i+1)+' of '+qs.length+'</p><h3>'+q[0]+'</h3><div id="options"></div><div id="feedback"></div></div>';q[1].forEach(a=>{let b=document.createElement('button');b.className='option';b.textContent=a;b.onclick=()=>{let ok=a===q[2];if(ok)score++;record(ok);document.querySelectorAll('.option').forEach(x=>x.disabled=true);el('feedback').innerHTML='<p><b>'+(ok?'Correct!':'Incorrect.')+'</b> '+q[3]+'</p><button class="primary" id="next">Continue</button>';el('next').onclick=()=>{i++;ask()}};el('options').appendChild(b)})}ask()}
+refresh();
+</script>
+</body>
+</html>
