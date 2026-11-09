@@ -189,3 +189,146 @@ body {
     font-weight: 600;
     cursor: pointer;
 }
+/* =========================================
+   Vocabulary Room Styles 
+   ========================================= */
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.back-btn {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    margin: 10px 0 20px 0;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-bar:focus {
+    border-color: var(--primary-color);
+}
+
+.vocab-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.vocab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.word-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.pos-badge {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.meaning-box {
+    margin-bottom: 15px;
+}
+
+.hindi-meaning {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #d97706; /* Amber color for easy reading */
+    margin-bottom: 5px;
+}
+
+.syn-ant-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background-color: var(--bg-color);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+}
+
+.example-box {
+    border-left: 3px solid var(--primary-color);
+    padding-left: 10px;
+    margin-bottom: 15px;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.mnemonic-box {
+    background-color: rgba(245, 158, 11, 0.1);
+    border: 1px dashed #f59e0b;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.exam-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8rem;
+    color: #059669;
+    background-color: rgba(5, 150, 105, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.learn-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.learn-btn.learned {
+    background-color: #4caf50;
+}
+
