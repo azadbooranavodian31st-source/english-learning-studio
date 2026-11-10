@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - English Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <header class="page-header">
+        <a href="index.html" class="back-btn"><i class='bx bx-home'></i></a>
+        <div class="logo">
+            <i class='bx bx-shield-quarter'></i>
+            <span>Owner Portal</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Login Section -->
+        <div id="login-section" class="admin-card">
+            <h2>Admin Login</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Restricted access. Only for Sahil.</p>
+            
+            <input type="text" id="admin-user" class="search-bar" placeholder="Username" style="margin-bottom: 10px;">
+            <input type="password" id="admin-pass" class="search-bar" placeholder="Password" style="margin-bottom: 20px;">
+            
+            <button class="learn-btn" onclick="checkLogin()">Login</button>
+            <p id="login-error" style="color: #f44336; margin-top: 10px; display: none; font-weight: bold;">Incorrect Username or Password!</p>
+        </div>
+
+        <!-- Admin Dashboard (Hidden by default) -->
+        <div id="admin-dashboard" style="display: none;">
+            <h2 class="section-title">Upload Study Source</h2>
+            
+            <div class="admin-card">
+                <label style="font-weight: bold; margin-bottom: 10px; display: block;">1. Select Target Room</label>
+                <select id="target-room" class="search-bar">
+                    <option value="rc">Reading Comprehension</option>
+                    <option value="vocab">Vocabulary</option>
+                    <option value="pyq">PYQ Practice</option>
+                </select>
+
+                <label style="font-weight: bold; margin: 15px 0 10px 0; display: block;">2. Upload PDF/Text Source</label>
+                <div class="upload-box">
+                    <i class='bx bx-cloud-upload' style='font-size: 3rem; color: var(--primary-color);'></i>
+                    <p>Tap to select file (PDF, TXT)</p>
+                    <input type="file" id="file-upload" style="display:none;">
+                    <button class="option-btn" onclick="document.getElementById('file-upload').click()" style="margin-top: 10px;">Choose File</button>
+                </div>
+
+                <label style="font-weight: bold; margin: 15px 0 10px 0; display: block;">3. Or Paste Content Manually</label>
+                <textarea class="search-bar" rows="5" placeholder="Paste The Hindu editorial or grammar rules here..."></textarea>
+
+                <button class="learn-btn" onclick="generateQuestions()" style="margin-top: 20px; background-color: #4caf50;">
+                    <i class='bx bx-cog'></i> Generate AI Questions
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
